@@ -88,6 +88,9 @@ var PolylineTextPath = {
             var alength = pattern.getComputedTextLength();
             svg.removeChild(pattern);
 
+            if (!alength) { // Prevent division by zero.
+              return;
+            }
             /* Create string as long as path */
             text = new Array(Math.ceil(isNaN(this._path.getTotalLength() / alength) ? 0 : this._path.getTotalLength() / alength)).join(text);
         }
